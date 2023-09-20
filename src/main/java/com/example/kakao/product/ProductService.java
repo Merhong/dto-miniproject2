@@ -1,6 +1,7 @@
 package com.example.kakao.product;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,4 +59,24 @@ public class ProductService {
         List<Option> optionsPS = optionJPARepository.findByProductId(id);
         return optionsPS;
     }
+
+    public List<ProductResponse.ProductDTO> 상품목록보기() {
+        List<Product> productList = productJPARepository.findAll();
+        
+        List<ProductResponse.ProductDTO> productDTOList = productList.stream()
+                .map( product -> new ProductResponse.ProductDTO(product) )
+                .collect( Collectors.toList() );
+
+        return productDTOList;
+    }
+
+
+
+
+
+
+
+
+
+    
 }

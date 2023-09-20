@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Mini-Project 2 (JSON 및 DTO 생성)
 
 ## 개발시작 Git 명령어

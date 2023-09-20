@@ -48,4 +48,12 @@ public class CartService {
             }
         }
     }
+
+
+    public CartResponse.FindAllByUserDTO 장바구니조회(int userId) {
+        List<Cart> cartList = cartJPARepository.findAllByUserId(userId);
+        return new CartResponse.FindAllByUserDTO(cartList);
+    }
+
+
 }
