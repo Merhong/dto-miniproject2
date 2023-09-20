@@ -139,4 +139,38 @@ public class ProductResponse {
             }
         }
     }
+
+
+
+    @Getter @Setter @ToString
+    public static class ProductDTO{
+        private Integer id;
+        private String name;
+        private String image;
+        private Integer price;
+
+        public ProductDTO(Product product) {
+            this.id = product.getId();
+            this.name = product.getProductName();
+            this.image = product.getImage();
+            this.price = product.getPrice();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

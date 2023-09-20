@@ -71,7 +71,7 @@ INSERT INTO cart_tb (`id`,`user_id`,`option_id`,`quantity`, `price`) VALUES (6, 
 
 INSERT INTO order_tb (`id`,`user_id`) VALUES (1, 1);
 
-INSERT INTO item_tb (`option_id`,`order_id`,`quantity`, `price`) VALUES (1, 1, 1, 10000);
-INSERT INTO item_tb (`option_id`,`order_id`,`quantity`, `price`) VALUES (2, 1, 1, 10900);
-INSERT INTO item_tb (`option_id`,`order_id`,`quantity`, `price`) VALUES (6, 1, 2, 19800);
+INSERT INTO item_tb (`option_id`,`order_id`,`quantity`, `price`) VALUES (8, 1, 2, 11000);
+INSERT INTO item_tb (`option_id`,`order_id`,`quantity`, `price`) VALUES (1, 1, 2, 20000);
+INSERT INTO item_tb (`option_id`,`order_id`,`quantity`, `price`) VALUES (2, 1, 2, 21800);
 

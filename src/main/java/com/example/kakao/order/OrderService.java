@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class OrderService {
-    private final ItemJPARepository ItemJPARepository;
+    private final ItemJPARepository itemJPARepository;
     private final OrderJPARepository orderJPARepository;
     private final CartJPARepository cartJPARepository;
 
@@ -58,7 +58,7 @@ public class OrderService {
             itemList.add(item);
         }
         try {
-            ItemJPARepository.saveAll(itemList);
+            itemJPARepository.saveAll(itemList);
         } catch (Exception e) {
             throw new Exception500("결재 실패 : " + e.getMessage());
         }
@@ -70,5 +70,32 @@ public class OrderService {
             throw new Exception500("장바구니 초기화 실패 : " + e.getMessage());
         }
     }
+
+
+
+
+    
+    public OrderResponse.FindAllByUserDTO 주문상품조회(int userId) {
+        
+        List<Cart> cartList = cartJPARepository.findAllByUserId(userId);
+        OrderResponse.FindAllByUserDTO findAllByUserDTO = new OrderResponse.FindAllByUserDTO(cartList);
+        return findAllByUserDTO;
+    }
+
+
+
+
+
+    public OrderResponse.FindByIdDTO 주문결과확인(Integer orderId) {
+
+        List<Item> itemList = itemJPARepository.findAllByOrderId(orderId);
+        OrderResponse.FindByIdDTO findByIdDto = new OrderResponse.FindByIdDTO(itemList);
+        return findByIdDto;
+    }
+
+
+
+
+
 
 }

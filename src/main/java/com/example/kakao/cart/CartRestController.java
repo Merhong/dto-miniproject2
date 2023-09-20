@@ -26,7 +26,10 @@ public class CartRestController {
     // (기능3) 장바구니 조회
     @GetMapping("/carts")
     public ResponseEntity<?> findAllByUser() {
-        return null;
+
+        CartResponse.FindAllByUserDTO findAllByUserDTO = cartService.장바구니조회(1);
+        
+        return ResponseEntity.ok(ApiUtils.success(findAllByUserDTO));
     }
 
     // 장바구니 담기
