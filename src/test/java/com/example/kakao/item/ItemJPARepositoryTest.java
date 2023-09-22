@@ -11,13 +11,13 @@ import com.example.kakao.order.item.ItemJPARepository;
 
 @DataJpaTest
 public class ItemJPARepositoryTest {
-    
+
     @Autowired
     private ItemJPARepository itemJPARepository;
 
     @Test
-    public void findAllByOrderId_test(){
+    public void findAllByOrderId_test() {
         List<Item> itemList = itemJPARepository.findAllByOrderId(1);
-        System.out.println( "테스트1: "+itemList.get(0).getId() );
+        System.out.println("테스트1: " + itemList.get(0).getId());
     }
 }

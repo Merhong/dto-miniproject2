@@ -62,21 +62,13 @@ public class ProductService {
 
     public List<ProductResponse.ProductDTO> 상품목록보기() {
         List<Product> productList = productJPARepository.findAll();
-        
+
         List<ProductResponse.ProductDTO> productDTOList = productList.stream()
-                .map( product -> new ProductResponse.ProductDTO(product) )
-                .collect( Collectors.toList() );
+                .map(product -> new ProductResponse.ProductDTO(product))
+                .collect(Collectors.toList());
 
         return productDTOList;
     }
 
 
-
-
-
-
-
-
-
-    
 }

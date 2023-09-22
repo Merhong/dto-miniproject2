@@ -12,12 +12,12 @@ import com.example.kakao.product.option.OptionJPARepository;
 
 @DataJpaTest
 public class OptionJPARepositoryTest {
-    
+
     @Autowired
     private OptionJPARepository optionJPARepository;
 
     @Test
-    public void findByProductId_test(){
+    public void findByProductId_test() {
         List<Option> options = optionJPARepository.findByProductId(1);
         // Lazy Loading 발동
         System.out.println("lazy 발동======================");

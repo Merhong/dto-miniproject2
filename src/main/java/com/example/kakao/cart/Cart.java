@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="cart_tb")
+@Table(name = "cart_tb")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class Cart {
     }
 
     // 장바구니 업데이트
-    public void update(int quantity, int price){
+    public void update(int quantity, int price) {
         this.quantity = quantity;
         this.price = price;
     }

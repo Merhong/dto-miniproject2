@@ -37,7 +37,7 @@ public class UserRestController {
 
     // 로그아웃
     @GetMapping("/logout")
-    public ResponseEntity<?> logout(){
+    public ResponseEntity<?> logout() {
         session.invalidate();
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }

@@ -141,9 +141,10 @@ public class ProductResponse {
     }
 
 
-
-    @Getter @Setter @ToString
-    public static class ProductDTO{
+    @Getter
+    @Setter
+    @ToString
+    public static class ProductDTO {
         private Integer id;
         private String name;
         private String image;
@@ -157,20 +158,6 @@ public class ProductResponse {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

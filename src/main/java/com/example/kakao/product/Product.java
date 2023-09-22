@@ -12,7 +12,7 @@ import com.example.kakao.product.option.Option;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="product_tb")
+@Table(name = "product_tb")
 public class Product {
 
     @Id

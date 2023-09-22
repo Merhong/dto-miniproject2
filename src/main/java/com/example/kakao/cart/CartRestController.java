@@ -26,11 +26,24 @@ public class CartRestController {
     // (기능3) 장바구니 조회
     @GetMapping("/carts")
     public ResponseEntity<?> findAllByUser() {
+        // User sessionUser = (User) session.getAttribute("sessionUser");
+        // if (sessionUser == null) {
+        //     throw new Exception401("인증되지 않았습니다");
+        // }
 
-        CartResponse.FindAllByUserDTO findAllByUserDTO = cartService.장바구니조회(1);
-        
-        return ResponseEntity.ok(ApiUtils.success(findAllByUserDTO));
+        CartResponse.FindAllByUserDTO responseDTO = cartService.findAllByUser(1);
+
+        return ResponseEntity.ok(ApiUtils.success(responseDTO));
     }
+
+    // (기능3) 장바구니 조회
+    // @GetMapping("/carts")
+    // public ResponseEntity<?> findAllByUser() {
+    //
+    //     CartResponse.FindAllByUserDTO findAllByUserDTO = cartService.장바구니조회(1);
+    //
+    //     return ResponseEntity.ok(ApiUtils.success(findAllByUserDTO));
+    // }
 
     // 장바구니 담기
     @PostMapping("/carts/add")

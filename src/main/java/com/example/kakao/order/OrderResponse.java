@@ -14,31 +14,29 @@ import lombok.Setter;
 import lombok.ToString;
 
 public class OrderResponse {
-
     // (기능4) 주문상품 정보조회 (유저별)
     @ToString
     @Getter
     @Setter
     public static class FindAllByUserDTO {
-        private List<CartDTO> cartDTOList;
-        private Integer totalPrice=0;
-
+        private Integer totalPrice = 0; // 가격 총합, 스칼라
+        private List<CartDTO> cartDTOList; // 전체는 JSON Object
 
         public FindAllByUserDTO(List<Cart> cartList) {
-            
-            cartList.stream()
-                .forEach( cart -> this.totalPrice += cart.getPrice() );
 
+            cartList.stream()
+                    .forEach(cart -> this.totalPrice += cart.getPrice());
 
             this.cartDTOList = cartList.stream()
-                .map( cart -> new CartDTO(cart) )
-                .collect( Collectors.toList() );
+                    .map(cart -> new CartDTO(cart))
+                    .collect(Collectors.toList());
         }
 
 
-
-        @Getter @Setter @ToString
-        public class CartDTO{
+        @Getter
+        @Setter
+        @ToString
+        public class CartDTO {
             private Integer cartId;
             private String productNameAndOptionName;
             private Integer cartQuantity;
@@ -53,24 +51,10 @@ public class OrderResponse {
             }
 
         }
-        
 
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
     // (기능5) 주문결과 확인
     @ToString
@@ -79,8 +63,7 @@ public class OrderResponse {
     public static class FindByIdDTO {
         private Integer orderId;
         private List<ProductDTO> productDTOList;
-        private Integer totalPrice=0;
-
+        private Integer totalPrice = 0;
 
 
         public FindByIdDTO(List<Item> itemList) {
@@ -88,23 +71,20 @@ public class OrderResponse {
             this.orderId = itemList.get(0).getOrder().getId();
 
             itemList.stream()
-                .forEach( cart -> this.totalPrice += cart.getPrice() );
+                    .forEach(cart -> this.totalPrice += cart.getPrice());
 
             this.productDTOList = itemList.stream()
-                .map( item -> item.getOption().getProduct() )
-                .distinct()
-                .map( product -> new ProductDTO(itemList, product) )
-                .collect( Collectors.toList() );
+                    .map(item -> item.getOption().getProduct())
+                    .distinct()
+                    .map(product -> new ProductDTO(itemList, product))
+                    .collect(Collectors.toList());
         }
 
 
-
-
-
-
-
-        @Getter @Setter @ToString
-        public class ProductDTO{
+        @Getter
+        @Setter
+        @ToString
+        public class ProductDTO {
             private Integer id;
             private String name;
             private List<ItemDTO> ItemDTOList;
@@ -112,18 +92,19 @@ public class OrderResponse {
             public ProductDTO(List<Item> itemList, Product product) {
                 this.id = product.getId();
                 this.name = product.getProductName();
-                
+
                 this.ItemDTOList = itemList.stream()
-                    .filter( item -> item.getOption().getProduct().equals(product) )
-                    .map( item -> new ItemDTO(item) )
-                    .collect( Collectors.toList() );
+                        .filter(item -> item.getOption().getProduct().equals(product))
+                        .map(item -> new ItemDTO(item))
+                        .collect(Collectors.toList());
             }
         }
 
-            
 
-        @Getter @Setter @ToString
-        public class ItemDTO{
+        @Getter
+        @Setter
+        @ToString
+        public class ItemDTO {
             private Integer id;
             private Integer quantity;
             private Integer price;
@@ -139,8 +120,10 @@ public class OrderResponse {
         }
 
 
-        @Getter @Setter @ToString
-        public class OptionDTO{
+        @Getter
+        @Setter
+        @ToString
+        public class OptionDTO {
             private Integer id;
             private String optionName;
 
@@ -148,20 +131,6 @@ public class OrderResponse {
                 this.id = option.getId();
                 this.optionName = option.getOptionName();
             }
-
         }
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
 }

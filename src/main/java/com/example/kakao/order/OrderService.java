@@ -29,7 +29,7 @@ public class OrderService {
         return null;
     }
 
-    
+
     // (기능5) 주문결과 확인
     public OrderResponse.FindByIdDTO findById(int id) {
         return null;
@@ -72,18 +72,12 @@ public class OrderService {
     }
 
 
-
-
-    
     public OrderResponse.FindAllByUserDTO 주문상품조회(int userId) {
-        
+
         List<Cart> cartList = cartJPARepository.findAllByUserId(userId);
         OrderResponse.FindAllByUserDTO findAllByUserDTO = new OrderResponse.FindAllByUserDTO(cartList);
         return findAllByUserDTO;
     }
-
-
-
 
 
     public OrderResponse.FindByIdDTO 주문결과확인(Integer orderId) {
@@ -92,10 +86,6 @@ public class OrderService {
         OrderResponse.FindByIdDTO findByIdDto = new OrderResponse.FindByIdDTO(itemList);
         return findByIdDto;
     }
-
-
-
-
 
 
 }
