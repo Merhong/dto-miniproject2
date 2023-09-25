@@ -19,9 +19,12 @@ dependencies {
 	annotationProcessor ('org.projectlombok:lombok')
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-devtools'
+    // https://mvnrepository.com/artifact/com.auth0/java-jwt
+    implementation 'com.auth0:java-jwt:4.4.0'
 
-	// local
-	runtimeOnly 'com.h2database:h2'
+
+    // local
+    	runtimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {

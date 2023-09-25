@@ -41,7 +41,7 @@ public class OrderRestController {
         return ResponseEntity.ok(ApiUtils.success(findByIdDto));
     }
 
-    // (기능4) 주문상품 정보조회 (유저별) - 장바구니 내역 가져오기
+    // (기능4) 주문상품 정보조회 (유저별) - 장바구니 내역 가져오기 - 인가 필요
     @GetMapping("/orders")
     public ResponseEntity<?> findAllByUser() {
 

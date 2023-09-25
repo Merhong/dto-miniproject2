@@ -23,7 +23,7 @@ public class ProductRestController {
     private final ProductService productService; // 자바에서 final 변수는 반드시 초기화되어야 함.
     private final HttpSession session;
 
-    // (기능1) 상품 목록보기
+    // (기능1) 상품 목록보기 - 인가 필요 -> jwt 토큰 검증
     @GetMapping("/products")
     public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page) {
 
