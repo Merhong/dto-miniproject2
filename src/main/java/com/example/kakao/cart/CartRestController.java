@@ -23,15 +23,15 @@ public class CartRestController {
     private final CartService cartService;
     private final HttpSession session;
 
-    // (기능3) 장바구니 조회
+    // (기능3) 장바구니 조회 - 인가 필요
     @GetMapping("/carts")
     public ResponseEntity<?> findAllByUser() {
-        // User sessionUser = (User) session.getAttribute("sessionUser");
-        // if (sessionUser == null) {
-        //     throw new Exception401("인증되지 않았습니다");
-        // }
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) {
+            throw new Exception401("인증되지 않았습니다");
+        }
 
-        CartResponse.FindAllByUserDTO responseDTO = cartService.findAllByUser(1);
+        CartResponse.FindAllByUserDTO responseDTO = cartService.findAllByUser(sessionUser.getId());
 
         return ResponseEntity.ok(ApiUtils.success(responseDTO));
     }
