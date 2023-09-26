@@ -1,5 +1,5 @@
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
-VALUES ('1', 'ssar@nate.com', '1234', 'ssar');
+VALUES ('1', 'ssar@nate.com', '12345678', 'ssar');
 
 INSERT INTO product_tb (`id`, `product_name`, `description`, `image`, `price`)
 VALUES ('1', '기본에 슬라이딩 지퍼백 크리스마스/플라워에디션 에디션 외 주방용품 특가전', '', '/images/1.jpg', '1000');
