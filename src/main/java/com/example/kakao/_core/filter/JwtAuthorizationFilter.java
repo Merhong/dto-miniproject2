@@ -30,9 +30,9 @@ public class JwtAuthorizationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
             throws IOException, ServletException {
+        // 다운 캐스팅을 해줘야지 더 많은 메서드를 사용할 수 있다.
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-
         String jwt = request.getHeader("Authorization");
 
         // 토큰이 없을때
@@ -62,7 +62,7 @@ public class JwtAuthorizationFilter implements Filter {
             // 검증 실패 예외처리
         } catch (SignatureVerificationException | JWTDecodeException e1) {
             onError(response, "토큰 검증 실패");
-            // 토큰 만료시간 예외처리
+            // 토큰 시간만료 예외처리
         } catch (TokenExpiredException e2) {
             onError(response, "토큰 시간 만료");
         }

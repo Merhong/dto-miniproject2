@@ -14,7 +14,10 @@ public class JwtTokenUtils {
         String jwt = JWT.create()
                 .withSubject("metacoding-key") // 제목, 토큰의 이름
                 .withClaim("id", user.getId()) // 토큰에다가 기록하고 싶은 정보 PK를 넣는다. (매우 중요)
-                .withClaim("email", user.getEmail()).withExpiresAt(Instant.now().plusMillis(1000 * 60 * 60 * 24 * 7L)) // 만료되는 시간을 적어야한다. (매우 중요)
+                .withClaim("email", user.getEmail())
+                .withExpiresAt(Instant.now().plusMillis(1000 * 60 * 60 * 24 * 7L)) // 만료되는 시간을 적어야한다. (매우 중요)
+                // 회원가입하고 첫 로그인시 만료시간이 설정되는데 코드를 1초로 바꾼다고하면 새로 회원가입해서
+                // 새로운 토큰에 적용되게 해야 함!!!
                 .sign(Algorithm.HMAC512("meta")); // 원래는 환경변수로 O/S에 적어둬서 외부접근을 차단해야한다.
         return "Bearer " + jwt;
     }
@@ -24,7 +27,7 @@ public class JwtTokenUtils {
     // 2. 키를 잘못입력
     // 3. 위조된 토큰?
     public static DecodedJWT verify(String jwt) throws SignatureVerificationException, TokenExpiredException {
-        // 통신후에 Bearer은 토큰 검증에 필요없으니 없앰
+        // HTTP 통신후에, Bearer은 토큰 검증에 필요없으니 없앤다.
         jwt = jwt.replace("Bearer ", "");
         // JWT를 검증하고 나서 헤더와 페이로드를 base64로 복호화
         DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC512("meta")).build().verify(jwt);
