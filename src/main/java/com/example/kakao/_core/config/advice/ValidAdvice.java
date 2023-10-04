@@ -15,11 +15,13 @@ import java.util.List;
 @Component
 public class ValidAdvice {
 
-    // 어떤 것을 막을지
+    // 어떤 것을 막을지 포인트컷을 설정해준다.
+    // PostMapping 어노테이션을 막는다.
     @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
     public void postMapping() {
     }
 
+    // PutMapping 어노테이션을 막는다.
     @Pointcut("@annotation(org.springframework.web.bind.annotation.PutMapping)")
     public void putMapping() {
     }

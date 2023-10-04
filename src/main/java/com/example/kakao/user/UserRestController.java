@@ -58,7 +58,7 @@ public class UserRestController {
 
     // Valid AOP 발동
     @PostMapping("/valid")
-    public String join(@Valid UserRequest.JoinDTO joinDTO, BindingResult bindingResult) {
+    public String joinTest(@Valid UserRequest.JoinDTO joinDTO, Errors errors) {
         return "ok";
     }
 
